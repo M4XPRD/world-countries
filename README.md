@@ -1,4 +1,4 @@
-# Countries of the World
+# REST Countries API with color theme switcher
 
 ## Description
 
@@ -15,10 +15,10 @@ This [task](https://www.frontendmentor.io/challenges/rest-countries-api-with-col
 
 ## Results
 
-Vercel deploy is [here](https://github-user-finder-ecru.vercel.app/).
+<!-- Vercel deploy is [here](https://github-user-finder-ecru.vercel.app/).
 
   - Everything is split between multiple components
   - Internal search works perfect, you can find any GitHub user via this app
   - It's adapted for mobile, tablets and desktop
 
-![Screenshot_1](https://github.com/M4XPRD/github-user-finder/assets/86636158/6808f8b3-e8f3-4ee9-b56c-87a76a72bf20)
+![Screenshot_1](https://github.com/M4XPRD/github-user-finder/assets/86636158/6808f8b3-e8f3-4ee9-b56c-87a76a72bf20) -->
