@@ -26,6 +26,9 @@ const ModeSwitcher = styled.div`
   font-size: var(--fs-sm);
   cursor: pointer;
   text-transform: capitalize;
+
+  display: flex;
+  align-items: center;
 `;
 
 const Header = () => {
@@ -41,7 +44,7 @@ const Header = () => {
     <HeaderEl>
       <Container>
         <Wrapper>
-          <Title>World</Title>
+          <Title>Where in the world?</Title>
           <ModeSwitcher onClick={toggleTheme}>
             {theme === 'light' ? (
               <IoMoon size="14px" />
