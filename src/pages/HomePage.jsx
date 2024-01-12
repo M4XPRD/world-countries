@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import Controls from '../components/Controls';
@@ -7,11 +7,30 @@ import Card from '../components/Card';
 import { ALL_COUNTRIES } from '../config';
 
 const HomePage = ({ countries, setCountries }) => {
+  const [filteredCountries, setFilteredCountries] = useState(countries);
   const navigate = useNavigate();
 
   const handleClick = (name) => {
     navigate(`/country/${name}`);
   };
+
+  const handleSearch = (search, region) => {
+    let data = countries;
+    if (region) {
+      data = data.filter((country) => country.region.includes(region));
+    }
+    if (search) {
+      data = data.filter((country) => country.name.toLowerCase().includes(search.toLowerCase()));
+    }
+
+    setFilteredCountries(data);
+  };
+
+  useEffect(() => {
+    if (!filteredCountries.length) {
+      setFilteredCountries(countries);
+    }
+  }, [filteredCountries, countries]);
 
   useEffect(() => {
     const controller = new AbortController();
@@ -41,9 +60,9 @@ const HomePage = ({ countries, setCountries }) => {
 
   return (
     <>
-      <Controls />
+      <Controls onSearch={handleSearch} />
       <List>
-        {countries.map((country) => {
+        {filteredCountries.map((country) => {
           const {
             capital, name, population, region, flags,
           } = country;
