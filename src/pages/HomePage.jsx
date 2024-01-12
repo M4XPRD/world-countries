@@ -72,7 +72,7 @@ const HomePage = ({ countries, setCountries }) => {
             info: [
               {
                 title: 'Population',
-                description: population.toLocaleString(),
+                description: population.toLocaleString('en'),
               },
               {
                 title: 'Region',
