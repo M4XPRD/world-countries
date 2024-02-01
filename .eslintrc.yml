@@ -4,16 +4,20 @@ env:
 
 extends:
   - airbnb
+  - airbnb-typescript
   - plugin:react/recommended
   - plugin:react-hooks/recommended
+  - plugin:@typescript-eslint/recommended
 
 parserOptions:
+  project: './tsconfig.json'
   ecmaFeatures:
     jsx: true
   ecmaVersion: latest
   sourceType: module
 
 plugins:
+  - '@typescript-eslint'
   - react
 
 rules:
