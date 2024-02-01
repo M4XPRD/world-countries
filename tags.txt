@@ -1,2 +1,0 @@
-1. styled components
-2. React + Axios
