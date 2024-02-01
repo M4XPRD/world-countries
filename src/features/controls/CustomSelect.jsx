@@ -20,13 +20,13 @@ const CustomSelect = styled(Select).attrs({
       backgroundColor: state.isSelected
         ? 'var(--colors-bg)' : 'var(--colors-ui-base)',
     }),
-    menuList: (provided) => ({
-      ...provided,
-      paddingTop: 0,
-      paddingBottom: 0,
-      borderRadius: 'var(--radius)',
-      backgroundColor: 'var(--colors-ui-base)',
-    }),
+    // menuList: (provided) => ({
+    //   ...provided,
+    //   paddingTop: 0,
+    //   paddingBottom: 0,
+    //   borderRadius: 'var(--radius)',
+    //   backgroundColor: 'var(--colors-ui-base)',
+    // }),
   },
 })`
   width: 200px;

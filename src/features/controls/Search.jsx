@@ -1,5 +1,6 @@
 import { IoSearch } from 'react-icons/io5';
 import styled from 'styled-components';
+import useSearch from './useSearch';
 
 const InputContainer = styled.label`
   background-color: var(--colors-ui-base);
@@ -30,11 +31,15 @@ const Input = styled.input.attrs({
   font-family: var(--family);
 `;
 
-const Search = ({ search, setSearch }) => (
-  <InputContainer>
-    <IoSearch />
-    <Input onChange={(e) => setSearch(e.target.value)} value={search} />
-  </InputContainer>
-);
+const Search = () => {
+  const [search, handleSearch] = useSearch();
+
+  return (
+    <InputContainer>
+      <IoSearch />
+      <Input onChange={handleSearch} value={search} />
+    </InputContainer>
+  );
+};
 
 export default Search;

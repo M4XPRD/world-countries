@@ -47,7 +47,7 @@ const Card = ({
   img, name, info = [], onClick,
 }) => (
   <Wrapper onClick={onClick}>
-    <CardImage src={img} />
+    <CardImage src={img} alt={name} />
     <CardBody>
       <CardTitle>{name}</CardTitle>
       <CardList>

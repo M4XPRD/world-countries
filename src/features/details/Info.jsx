@@ -1,7 +1,5 @@
 import styled from 'styled-components';
-import axios from 'axios';
-import { useState, useEffect } from 'react';
-import { filterByCode } from '../config';
+import useNeighbours from './useNeighbours';
 
 const Wrapper = styled.section`
   margin-top: 3rem;
@@ -105,35 +103,11 @@ const Info = (props) => {
     navigate,
   } = props;
 
-  const [neighbours, setNeighbours] = useState([]);
+  const neighbours = useNeighbours(borders);
 
   const handleNeighbourCountry = (neighbourName) => {
     navigate(`/country/${neighbourName}`);
   };
-
-  useEffect(() => {
-    const controller = new AbortController();
-    const { signal } = controller;
-
-    const getNeightbours = async () => {
-      if (borders.length) {
-        axios
-          .get(filterByCode(borders), { signal })
-          .then(({ data }) => setNeighbours(data.map((country) => country.name)))
-          .catch((err) => {
-            if (err.message !== 'canceled') {
-              console.log('error: ', err);
-            }
-          });
-      }
-    };
-
-    getNeightbours();
-
-    return () => {
-      controller.abort();
-    };
-  }, [borders]);
 
   return (
     <Wrapper>
@@ -194,12 +168,12 @@ const Info = (props) => {
             <span>There are no border countries</span>
           ) : (
             <TagGroup>
-              {neighbours.map((neighbour) => (
+              {neighbours.map((countryName) => (
                 <Tag
-                  key={neighbour}
-                  onClick={() => handleNeighbourCountry(neighbour)}
+                  key={countryName}
+                  onClick={() => handleNeighbourCountry(countryName)}
                 >
-                  {neighbour}
+                  {countryName}
                 </Tag>
               ))}
             </TagGroup>
