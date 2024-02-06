@@ -37,4 +37,5 @@ Vercel deploy is [here](https://world-countries-rhes7uyjq-m4xprd.vercel.app/).
   - App supports light and dark theme
   - It's adapted for mobile, tablets and desktop
 
+![world-countries-gif](https://github.com/M4XPRD/world-countries/assets/86636158/09d3b2ba-8044-4857-a692-941c341ddd25)
 
