@@ -3,11 +3,13 @@
 
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-html {
+/* html {
   overflow: scroll;
-}
+} */
 
 :root {
   /* Typography */
@@ -29,7 +31,7 @@ body::-webkit-scrollbar {
 }
 
 body::-webkit-scrollbar-thumb {
-  background-color: orange;
+  background-color: #6CB4EE;
 }
 
 body[data-theme='dark'] {
