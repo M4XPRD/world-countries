@@ -22,7 +22,7 @@ export type Country = {
   subregion: string;
   population: number;
   capital: string;
-  topLeverDomain: string[];
+  topLevelDomain: string[];
   borders: string[];
   currencies: Currency[];
   languages: Language[];

@@ -1,17 +1,32 @@
 /* eslint-disable no-param-reassign */
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { memoize } from 'proxy-memoize';
+import { Country, Extra, Status } from 'types';
 
-export const loadCountryByName = createAsyncThunk(
+export const loadCountryByName = createAsyncThunk<
+{ data: Country[] },
+string,
+{ extra: Extra }
+>(
   'details/load-country-by-name',
   (name, { extra: { client, api } }) => client.get(api.searchByCountry(name)),
 );
-export const loadNeighboursByBorder = createAsyncThunk(
+export const loadNeighboursByBorder = createAsyncThunk<
+{ data: Country[] },
+string[],
+{ extra: Extra }
+>(
   'details/load-neighbours',
   (borders, { extra: { client, api } }) => client.get(api.filterByCode(borders)),
 );
 
-const initialState = {
+type DetailsSlice = {
+  currentCountry: Country | null,
+  neighbours: string[],
+  status: Status,
+  error: string | null,
+};
+
+const initialState: DetailsSlice = {
   currentCountry: null,
   neighbours: [],
   status: 'idle',
@@ -30,9 +45,9 @@ const detailsSlice = createSlice({
         state.status = 'loading';
         state.error = null;
       })
-      .addCase(loadCountryByName.rejected, (state, action) => {
+      .addCase(loadCountryByName.rejected, (state) => {
         state.status = 'rejected';
-        state.error = action.payload || action.meta.error;
+        state.error = 'Cannot load data';
       })
       .addCase(loadCountryByName.fulfilled, (state, action) => {
         const [currentCountry] = action.payload.data;
@@ -47,7 +62,3 @@ const detailsSlice = createSlice({
 
 export const { clearDetails } = detailsSlice.actions;
 export const detailsReducer = detailsSlice.reducer;
-
-export const selectCurrentCountry = memoize((state) => state.details.currentCountry);
-export const selectDetails = memoize((state) => state.details);
-export const selectNeighbours = memoize((state) => state.details.neighbours);

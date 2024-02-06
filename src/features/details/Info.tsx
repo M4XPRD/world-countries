@@ -1,4 +1,6 @@
 import styled from 'styled-components';
+import { Country } from 'types';
+import { NavigateFunction } from 'react-router-dom';
 import useNeighbours from './useNeighbours';
 
 const Wrapper = styled.section`
@@ -87,7 +89,11 @@ const Tag = styled.span`
   cursor: pointer;
 `;
 
-const Info = (props) => {
+interface InfoProps extends Country {
+  navigate: NavigateFunction,
+}
+
+const Info = (props: InfoProps) => {
   const {
     name,
     nativeName,
@@ -105,7 +111,7 @@ const Info = (props) => {
 
   const neighbours = useNeighbours(borders);
 
-  const handleNeighbourCountry = (neighbourName) => {
+  const handleNeighbourCountry = (neighbourName: string) => {
     navigate(`/country/${neighbourName}`);
   };
 
