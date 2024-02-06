@@ -4,7 +4,7 @@ import { NavigateFunction } from 'react-router-dom';
 import useNeighbours from './useNeighbours';
 
 const Wrapper = styled.section`
-  margin-top: 3rem;
+  margin-top: 2.5rem;
   width: 100%;
   display: grid;
   grid-template-columns: 100%;

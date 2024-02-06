@@ -12,7 +12,7 @@ const CountryDetails = ({ name = '', navigate }: CountryDetailsProps) => {
 
   return (
     <>
-      {status === 'loading' && <h2>Loading...</h2>}
+      {status === 'loading' && <h2 style={{ paddingTop: '2.5rem' }}>Loading...</h2>}
       {error && <h2>{error}</h2>}
       {currentCountry && <Info navigate={navigate} {...currentCountry} />}
     </>
