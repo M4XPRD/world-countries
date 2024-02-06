@@ -1,13 +1,12 @@
 import React from 'react';
 import * as ReactDOMClient from 'react-dom/client';
-
-import './index.css';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import store from 'store';
 import App from './App';
+import './index.css';
 
-const rootElement = document.getElementById('root');
+const rootElement = document.getElementById('root') as HTMLDivElement;
 const root = ReactDOMClient.createRoot(rootElement);
 
 root.render(

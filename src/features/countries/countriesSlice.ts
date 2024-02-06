@@ -1,16 +1,36 @@
 /* eslint-disable consistent-return */
 /* eslint-disable no-param-reassign */
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { memoize } from 'proxy-memoize';
+import { Country, Extra, Status } from '../../types/index';
 
-export const loadCountries = createAsyncThunk(
+export const loadCountries = createAsyncThunk<
+{ data: Country[] },
+undefined,
+{
+  state: { countries: CountriesSlice };
+  extra: Extra;
+  rejectValue: string;
+}
+>(
   'countries/load-countries',
-  (_, {
+  async (_, {
     extra: { client, api },
-  }) => client.get(api.ALL_COUNTRIES),
+    rejectWithValue,
+  }) => {
+    try {
+      return await client.get(api.ALL_COUNTRIES);
+    } catch (error) {
+      if (error instanceof Error) {
+        return rejectWithValue(error.message);
+      }
+      return rejectWithValue('Unknown error');
+    }
+  },
   {
     condition: (_, { getState }) => {
-      const { countries: { status } } = getState();
+      const {
+        countries: { status },
+      } = getState();
 
       if (status === 'loading') {
         return false;
@@ -19,7 +39,13 @@ export const loadCountries = createAsyncThunk(
   },
 );
 
-const initialState = {
+type CountriesSlice = {
+  status: Status;
+  error: string | null;
+  list: Country[];
+};
+
+const initialState: CountriesSlice = {
   status: 'idle',
   error: null,
   list: [],
@@ -37,7 +63,7 @@ const countrySlice = createSlice({
       })
       .addCase(loadCountries.rejected, (state, action) => {
         state.status = 'rejected';
-        state.error = action.payload || action.meta.error;
+        state.error = action.payload || 'Cannot load data';
       })
       .addCase(loadCountries.fulfilled, (state, action) => {
         state.status = 'received';
@@ -47,16 +73,3 @@ const countrySlice = createSlice({
 });
 
 export const countryReducer = countrySlice.reducer;
-
-export const selectCountriesInfo = memoize((state) => ({
-  status: state.countries.status,
-  error: state.countries.error,
-  qty: state.countries.list.length,
-}));
-
-export const selectAllCountries = memoize((state) => state.countries.list);
-export const selectVisibleCountries = (state, { search = '', region = '' }) => state.countries.list.filter(
-  (country) => (
-    country.name.toLowerCase().includes(search.toLowerCase()) && country.region.includes(region)
-  ),
-);
