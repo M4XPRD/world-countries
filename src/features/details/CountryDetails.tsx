@@ -3,8 +3,8 @@ import Info from './Info';
 import useDetails from './useDetails';
 
 interface CountryDetailsProps {
-  name: string;
   navigate: NavigateFunction;
+  name?: string;
 }
 
 const CountryDetails = ({ name = '', navigate }: CountryDetailsProps) => {

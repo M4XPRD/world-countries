@@ -1,9 +1,19 @@
 import styled from 'styled-components';
-import Select from 'react-select';
+import Select, { CSSObjectWithLabel, Props } from 'react-select';
+import { Region } from 'types';
 
-const CustomSelect = styled(Select).attrs({
+export type CountryOption = {
+  label: Region,
+  value: Region,
+} | '';
+
+const MySelect = (props: Props<CountryOption, false>) => (
+  <Select {...props} />
+);
+
+const CustomSelect = styled(MySelect).attrs({
   styles: {
-    control: (provided) => ({
+    control: (provided: CSSObjectWithLabel) => ({
       ...provided,
       backgroundColor: 'var(--colors-ui-base)',
       color: 'var(--colors-text)',
@@ -12,21 +22,22 @@ const CustomSelect = styled(Select).attrs({
       border: 'none',
       boxShadow: 'var(--shadow)',
       height: '50px',
+      cursor: 'pointer',
     }),
-    option: (provided, state) => ({
+    option: (provided: CSSObjectWithLabel, state: { isSelected: boolean }) => ({
       ...provided,
       cursor: 'pointer',
       color: 'var(--colors-text)',
       backgroundColor: state.isSelected
         ? 'var(--colors-bg)' : 'var(--colors-ui-base)',
     }),
-    // menuList: (provided) => ({
-    //   ...provided,
-    //   paddingTop: 0,
-    //   paddingBottom: 0,
-    //   borderRadius: 'var(--radius)',
-    //   backgroundColor: 'var(--colors-ui-base)',
-    // }),
+    menuList: (provided: CSSObjectWithLabel) => ({
+      ...provided,
+      paddingTop: 0,
+      paddingBottom: 0,
+      borderRadius: '0.3rem',
+      backgroundColor: 'var(--colors-ui-base)',
+    }),
   },
 })`
   width: 200px;

@@ -4,7 +4,7 @@ import { memoize } from 'proxy-memoize';
 
 import { RootState, useAppDispatch } from 'store';
 import { Country } from 'types';
-import { selectControls } from '../controls/controlsSlice';
+import { selectControls } from 'features/controls/controlsSelectors';
 import { loadCountries } from './countriesSlice';
 import { selectCountriesInfo, selectVisibleCountries } from './countriesSelectors';
 

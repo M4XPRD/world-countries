@@ -1,12 +1,11 @@
 import axios from 'axios';
 import { configureStore } from '@reduxjs/toolkit';
-
 import { useDispatch } from 'react-redux';
-import * as api from './config';
-import { themeReducer } from './features/theme/themeSlice';
-import { controlsReducer } from './features/controls/controlsSlice';
-import { countryReducer } from './features/countries/countriesSlice';
-import { detailsReducer } from './features/details/detailsSlice';
+import { themeReducer } from 'features/theme/themeSlice';
+import { controlsReducer } from 'features/controls/controlsSlice';
+import { countryReducer } from 'features/countries/countriesSlice';
+import { detailsReducer } from 'features/details/detailsSlice';
+import * as api from 'config';
 
 const store = configureStore({
   reducer: {
