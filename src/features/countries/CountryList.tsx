@@ -11,8 +11,8 @@ const CountryList = () => {
 
   return (
     <>
-      {error && <h2>Can&apos;t fetch data</h2>}
-      {status === 'loading' && <h2>Loading...</h2>}
+      {error && <h2 style={{ paddingTop: '2.5rem' }}>Can&apos;t fetch data</h2>}
+      {status === 'loading' && <h2 style={{ paddingTop: '2.5rem' }}>Loading...</h2>}
 
       {status === 'received' && (
       <List>
