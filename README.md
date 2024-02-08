@@ -6,19 +6,36 @@ This [task](https://www.frontendmentor.io/challenges/rest-countries-api-with-col
 
 > If you're wanting to test your JavaScript skills this is the challenge for you. Use whichever JS framework you prefer and pull data from the REST Countries API.
 
+## Install
+
+```sh
+All commands should be run from the root folder:
+
+# Шаг 1 — Clone the repo
+$ https://github.com/M4XPRD/world-countries/
+
+# Шаг 2 — Install the dependencies and run the app at the same time
+$ make install
+
+# Шаг 2.5 — If you just need to start a project again
+$ make start
+```
+
 ## Stack and tech
 
-  - TypeScript
-  - React
-  - Redux
-  - API
+  - `TypeScript`
+  - `React`
+  - `Redux Toolkit`
+  - `Axios`
+  - `styled-components`
 
 ## Results
 
-<!-- Vercel deploy is [here](https://github-user-finder-ecru.vercel.app/).
+Vercel deploy is [here](https://world-countries-rhes7uyjq-m4xprd.vercel.app/).
 
-  - Everything is split between multiple components
-  - Internal search works perfect, you can find any GitHub user via this app
+  - App fetches all the countries in the world and shows various info about them
+  - App supports light and dark theme
   - It's adapted for mobile, tablets and desktop
 
-![Screenshot_1](https://github.com/M4XPRD/github-user-finder/assets/86636158/6808f8b3-e8f3-4ee9-b56c-87a76a72bf20) -->
+![world-countries-gif](https://github.com/M4XPRD/world-countries/assets/86636158/09d3b2ba-8044-4857-a692-941c341ddd25)
+
