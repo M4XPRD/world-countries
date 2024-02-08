@@ -3,3 +3,6 @@ install:
 
 start:
 	npm run start
+
+build:
+	npm install --force && npm run build
